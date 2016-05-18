@@ -10,4 +10,6 @@ api_conf="/home/source/unicorn_api.conf"
 apt-get update
 yes | apt-get install inotify-tools
 
+install -m 755 /home/source/word-changer /usr/bin/word-changer
+
 exit 0
