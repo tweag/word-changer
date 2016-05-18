@@ -7,4 +7,7 @@ cp /home/source/var/www/index.html /var/www/index.html
 api_conf="/home/source/unicorn_api.conf"
 [ -e "$api_conf" ] && cp $api_conf /etc/
 
+apt-get update
+yes | apt-get install inotify-tools
+
 exit 0

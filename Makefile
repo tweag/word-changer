@@ -19,4 +19,7 @@ clean: FORCE
 list:
 	rainbow --list word_changer
 
+send-to-nas:
+	scp build/armv7/com.promptworks.word_changer-1.0-armv7.rbw nas:
+
 FORCE:
