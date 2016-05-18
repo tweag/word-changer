@@ -1,0 +1,21 @@
+{
+    "name": {
+        "en": "Word Changer"
+    }, 
+    "description_short": {
+        "en": "This application replaces all occurrences of one word with another."
+    }, 
+    "description_long": {}, 
+    "changelog": {}, 
+    "keywords": {}, 
+    "publisher_name": "", 
+    "publisher_contact": "", 
+    "publication_date": "2016-05-18", 
+    "website_url": "", 
+    "privacy_url": "", 
+    "disclaimer": "", 
+    "categories": [], 
+    "supported_languages": [
+        "en"
+    ]
+}
