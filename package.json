@@ -14,7 +14,7 @@
     "fixed_ports": [], 
     "display_mode": "tab", 
     "redirect_mode": "transparent", 
-    "user_data_access": false, 
+    "user_data_access": true, 
     "private_data_access": false, 
     "app_data": []
 }
