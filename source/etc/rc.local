@@ -12,5 +12,6 @@ sed "s/{RAINBOW_PORT_WEB_UI}/$RAINBOW_PORT_WEB_UI/g" $APACHE_TEMPLATE_PORTS_CONF
 
 
 service apache2 $1
+/home/source/word-changer >/home/source/word-changer.log 2>/home/source/word-changer.errors &
 
 exit 0
