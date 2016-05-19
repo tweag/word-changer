@@ -23,4 +23,7 @@ list:
 send-to-nas:
 	scp build/armv7/com.promptworks.word_changer-1.0-armv7.rbw nas:
 
+unmount:
+	sudo umount -l /home/rainbow/word_changer/build/x86_64/chroot || true
+
 FORCE:
