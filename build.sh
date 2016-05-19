@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 install -m 755 /home/source/etc/rc.local /etc
 
@@ -17,7 +17,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 # TODO skip all these if it alreay exists
 
-yes n | pyenv install 2.7.9
+yes n | pyenv install 2.7.9 || true
 pyenv global 2.7.9
 pip install virtualenv
 
