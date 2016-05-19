@@ -3,16 +3,9 @@
 # rc.local
 #
 
-# Update config files with NASOS informations
-APACHE_TEMPLATE_DEFAULT_SITE="/etc/default.apache_template"
-APACHE_TEMPLATE_PORTS_CONF="/etc/ports.conf.apache_template"
-
-sed "s,{RAINBOW_WEB_PATH},$RAINBOW_WEB_PATH,g" $APACHE_TEMPLATE_DEFAULT_SITE > /etc/apache2/sites-available/default
-sed "s/{RAINBOW_PORT_WEB_UI}/$RAINBOW_PORT_WEB_UI/g" $APACHE_TEMPLATE_PORTS_CONF > /etc/apache2/ports.conf
-
-
-service apache2 $1
-
+cd /opt/word-changer
+source .venv/bin/activate
+./word-changer-web > /var/log/word-changer-web.log 2>/var/log/word-changer-web.errors &
 word-changer > /var/log/word-changer.log 2>/var/log/word-changer.errors &
 
 exit 0

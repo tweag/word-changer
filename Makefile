@@ -13,9 +13,9 @@ remove:
 	sudo rainbow --remove word_changer
 
 clean: FORCE
-	sudo rainbow --clean /home/rainbow/word_changers --arch x86_64
-	sudo rainbow --clean /home/rainbow/word_changers --arch armv7
 	sudo rm -rf build
+	#sudo rainbow --clean /home/rainbow/word_changers --arch x86_64
+	#sudo rainbow --clean /home/rainbow/word_changers --arch armv7
 
 list:
 	rainbow --list word_changer
