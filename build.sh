@@ -11,11 +11,13 @@ apt-get install -y inotify-tools
 apt-get install -y git make build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
 
-git clone https://github.com/yyuu/pyenv.git /opt/.pyenv
+[ ! -d /opt/.pyenv ] && git clone https://github.com/yyuu/pyenv.git /opt/.pyenv
 export PYENV_ROOT="/opt/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-pyenv install 2.7.9
+# TODO skip all these if it alreay exists
+
+yes n | pyenv install 2.7.9
 pyenv global 2.7.9
 pip install virtualenv
 
@@ -24,7 +26,7 @@ base=/opt/word-changer-web
 
 install -m 755 /home/source/word-changer-web $base/word-changer-web
 
-virtualenv $base/.venv
+[ ! -d "$base/.venv" ] && virtualenv $base/.venv
 source $base/.venv/bin/activate
 pip install flask
 
