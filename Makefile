@@ -1,29 +1,36 @@
+
+# examples:
+
+# make
+# make arch=armv7
+
+arch=x86_64
+root=/home/rainbow/word_changer
+name=word_changer
+version=1.0
+
 build: FORCE
-	sudo rainbow --build /home/rainbow/word_changer --arch x86_64
-	sudo rainbow --build /home/rainbow/word_changer --arch armv7
+	sudo rainbow --build $(root) --arch $(arch)
 
 pack:
-	sudo rainbow --pack /home/rainbow/word_changer --arch x86_64
-	sudo rainbow --pack /home/rainbow/word_changer --arch armv7
+	sudo rainbow --pack $(root) --arch $(arch)
 
 install:
-	sudo rainbow --install /home/rainbow/word_changer/build/x86_64/com.promptworks.word_changer-1.0-x86_64.rbw
+	sudo rainbow --install $(root)/build/x86_64/com.promptworks.$(name)-$(version)-$(arch).rbw
 
 remove:
 	sudo rainbow --remove word_changer
 
-clean: FORCE
-	sudo rm -rf build
-	#sudo rainbow --clean /home/rainbow/word_changers --arch x86_64
-	#sudo rainbow --clean /home/rainbow/word_changers --arch armv7
-
 list:
-	rainbow --list word_changer
+	rainbow --list $(name)
 
 send-to-nas:
-	scp build/armv7/com.promptworks.word_changer-1.0-armv7.rbw nas:
+	scp build/armv7/com.promptworks.$(name)-$(version)-$(arch).rbw nas:
 
 unmount:
-	sudo umount -l /home/rainbow/word_changer/build/x86_64/chroot || true
+	sudo umount -l $(root)/build/$(arch)/chroot
+
+clean: FORCE
+	sudo rainbow --clean $(root) --arch $(arch)
 
 FORCE:

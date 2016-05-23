@@ -3,9 +3,11 @@
 # rc.local
 #
 
-cd /opt/word-changer-web
+log=/var/log
+
+cd /opt/web
 source .venv/bin/activate
-./word-changer-web > /var/log/word-changer-web.log 2>/var/log/word-changer-web.errors &
-word-changer > /var/log/word-changer.log 2>/var/log/word-changer.errors &
+./word-changer-web > $log/word-changer-web.log 2>$log/word-changer-web.errors &
+word-changer       > $log/word-changer.log     2>$log/word-changer.errors &
 
 exit 0

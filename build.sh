@@ -1,35 +1,38 @@
 #!/bin/bash -x
 
-install -m 755 /home/source/etc/rc.local /etc
-
+# unicorn api
 api_conf="/home/source/unicorn_api.conf"
 [ -e "$api_conf" ] && cp $api_conf /etc/
 
+# app prereqs
 apt-get update
 apt-get install -y inotify-tools
 
-apt-get install -y git make build-essential libssl-dev zlib1g-dev libbz2-dev \
+# python build (pyenv)
+ apt-get install -y git make build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
-
 [ ! -d /opt/.pyenv ] && git clone https://github.com/yyuu/pyenv.git /opt/.pyenv
 export PYENV_ROOT="/opt/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-
-# TODO skip all these if it alreay exists
-
 yes n | pyenv install 2.7.9 || true
 pyenv global 2.7.9
+
+# virtualenv
 pip install virtualenv
 
-mkdir -p /opt/word-changer-web
-base=/opt/word-changer-web
+src=/home/source
+dst=/opt/web
+mkdir -p $dst
+rm -rf $dst/.venv
+virtualenv $dst/.venv
+source $dst/.venv/bin/activate
 
-install -m 755 /home/source/word-changer-web $base/word-changer-web
-
-[ ! -d "$base/.venv" ] && virtualenv $base/.venv
-source $base/.venv/bin/activate
+# prereqs
 pip install flask
 
-install -m 755 /home/source/word-changer /usr/bin/word-changer
+# install
+install -m 755 $src/etc/rc.local /etc
+install -m 755 $src/word-changer-web $dst/word-changer-web
+install -m 755 $src/word-changer /usr/bin/word-changer
 
 exit 0
