@@ -34,5 +34,6 @@ pip install flask
 install -m 755 $src/rc.local /etc
 install -m 755 $src/word-changer-web $dst/word-changer-web
 install -m 755 $src/word-changer /usr/bin/word-changer
+cp $src/mid.py $dst/
 
 exit 0
