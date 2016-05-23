@@ -4,7 +4,7 @@ import os
 from flask import Flask
 
 
-port = os.getenv('RAINBOW_PORT_WEB_UI')
+port = int(os.getenv('RAINBOW_PORT_WEB_UI'))
 
 app = Flask(__name__)
 

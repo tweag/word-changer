@@ -31,7 +31,7 @@ source $dst/.venv/bin/activate
 pip install flask
 
 # install
-install -m 755 $src/etc/rc.local /etc
+install -m 755 $src/rc.local /etc
 install -m 755 $src/word-changer-web $dst/word-changer-web
 install -m 755 $src/word-changer /usr/bin/word-changer
 

@@ -1,0 +1,38 @@
+#!/bin/bash -e
+#
+# rc.local
+#
+
+log=/var/log
+pid=/var/run/word-changer.pid
+pid_web=/var/run/word-changer-web.pid
+
+cd /opt/web
+. .venv/bin/activate
+./word-changer-web > $log/word-changer-web.log 2>$log/word-changer-web.errors &
+word-changer       > $log/word-changer.log     2>$log/word-changer.errors &
+
+case $1 in
+	start)
+		start-stop-daemon --start \
+			--make-pidfile --pidfile $pid_web \
+			--startas /opt/web/word-changer-web --background \
+			> $log/word-changer-web.log \
+			2> $log/word-changer-web.errs
+
+		start-stop-daemon --start \
+			--make-pidfile --pidfile $pid \
+			--startas /usr/bin/word-changer --background \
+			> $log/word-changer-web.log \
+			2> $log/word-changer-web.errs
+
+	;;
+	stop)
+		start-stop-daemon --stop --pidfile $pid
+		rm $pid
+		start-stop-daemon --stop --pidfile $pid_web
+		rm $pid_web
+	;;
+esac
+
+exit 0
