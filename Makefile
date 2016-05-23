@@ -36,4 +36,7 @@ clean: FORCE
 update:
 	make remove && make build && make pack && make install
 
+enter:
+	sudo rainbow --enter $(name)
+
 FORCE:
