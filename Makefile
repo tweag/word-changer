@@ -33,4 +33,7 @@ unmount:
 clean: FORCE
 	sudo rainbow --clean $(root) --arch $(arch)
 
+update:
+	make remove && make build && make pack && make install
+
 FORCE:
