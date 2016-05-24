@@ -19,7 +19,7 @@ install:
 	sudo rainbow --install $(root)/build/x86_64/com.promptworks.$(name)-$(version)-$(arch).rbw
 
 remove:
-	sudo rainbow --remove word_changer
+	sudo rainbow --remove ${name}
 
 list:
 	rainbow --list $(name)
