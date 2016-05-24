@@ -5,7 +5,7 @@
 # make arch=armv7
 
 arch=x86_64
-root=/home/rainbow/word_changer
+root=$(shell pwd)
 name=word_changer
 version=1.0
 
