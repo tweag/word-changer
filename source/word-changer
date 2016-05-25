@@ -2,7 +2,7 @@
 
 watchdir=/shares/Public/text_files
 while true; do
-  filename=`inotifywait $watchdir -e close_write --format '%w%f'`
+  filename=`inotifywait $watchdir -e close_write --exclude '.*\.tmp' --format '%w%f'`
   sed 's/hi/hello/g' $filename > $filename.tmp && mv $filename.tmp $filename
 done
 
